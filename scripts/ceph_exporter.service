@@ -1,0 +1,13 @@
+[Unit]
+Description=ceph_exporter-9128 service
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+LimitNOFILE=1000000
+User=root
+ExecStart=/opt/ceph_exporter/ceph_exporter --web.listen-address=127.0.0.1:9128
+Restart=always
+RestartSec=15s
+
+[Install]
+WantedBy=multi-user.target
